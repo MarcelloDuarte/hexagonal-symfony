@@ -1,0 +1,4 @@
+ceremony_tracker:
+    resource: "@CeremonyTrackerBundle/Resources/config/routing.yml"
+    prefix:   /
+

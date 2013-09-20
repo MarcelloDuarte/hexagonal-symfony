@@ -1,0 +1,5 @@
+default:
+    autoload: tests/contexts
+    suites:
+        default:
+            context: ProjectManagerContext

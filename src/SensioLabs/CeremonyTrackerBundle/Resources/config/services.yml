@@ -1,0 +1,71 @@
+parameters: []
+
+services:
+    controllers.security:
+        class: SensioLabs\CeremonyTrackerBundle\Controller\SecurityController
+        arguments:
+            - @templating
+
+    controllers.list_my_projects:
+        class: SensioLabs\CeremonyTrackerBundle\Controller\ListMyProjectsController
+        arguments:
+            - @use_case.get_manager_projects
+            - @security.token
+            - @form_view.create_project
+            - @templating
+
+    controllers.create_project:
+        class: SensioLabs\CeremonyTrackerBundle\Controller\CreateProjectController
+        arguments:
+            - @use_case.create_project
+            - @security.token
+            - @form.create_project
+            - @session.flashbag
+            - @router
+        tags:
+            - { name: kernel.event_listener, event: sensio.ceremony_tracker.project_creation_success, method: onSuccess }
+            - { name: kernel.event_listener, event: sensio.ceremony_tracker.project_creation_failure, method: onFailure }
+
+    use_case.get_manager_projects:
+        class: SensioLabs\CeremonyTracker\GetManagerProjects
+        arguments:
+            - @repository.projects
+
+    use_case.create_project:
+        class: SensioLabs\CeremonyTracker\CreateProject
+        arguments:
+            - @repository.projects
+            - @event_dispatcher
+
+    repository.projects:
+        class:           Doctrine\Common\Persistence\ObjectRepository
+        factory_service: doctrine
+        factory_method:  getRepository
+        arguments:
+            - CeremonyTrackerBundle:Project
+
+    form.create_project:
+        class:           Symfony\Component\Form\FormInterface
+        factory_service: form.factory
+        factory_method:  create
+        arguments:
+            - @form_type.create_project
+            - []
+
+    form_view.create_project:
+        class:           Symfony\Component\Form\FormView
+        factory_service: form.create_project
+        factory_method:  createView
+
+    form_type.create_project:
+        class:           SensioLabs\CeremonyTrackerBundle\Form\CreateProjectType
+
+    session.flashbag:
+        class:           Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface
+        factory_service: session
+        factory_method:  getFlashBag
+
+    security.token:
+        class:           Symfony\Component\Security\Core\Authentication\Token\TokenInterface
+        factory_service: security.context
+        factory_method:  getToken
