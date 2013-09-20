@@ -199,7 +199,7 @@ class ProjectManagerContext implements ContextInterface
     {
         $sprints = $this->getSprintsCase->getProjectSprints($this->project);
         if ($sprints[0]->getStartDate()->format('d.m.Y') != date('d.m.Y', strtotime($date))) {
-            throw new RuntimeException(sprintf('Sprints does not start on %s.', $date));
+            throw new RuntimeException(sprintf('Sprint does not start on %s.', $date));
         }
     }
 
