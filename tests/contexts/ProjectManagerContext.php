@@ -220,7 +220,7 @@ class ProjectManagerContext implements ContextInterface
     {
         $sprints = $this->getSprintsCase->getProjectSprints($this->project);
         if (count($sprints)) {
-            throw new RuntimeException('Sprint was been scheduled.');
+            throw new RuntimeException('Sprint has been scheduled.');
         }
     }
 
