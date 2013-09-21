@@ -195,11 +195,11 @@ class ProjectManagerContext implements ContextInterface
     /**
      * @Then /^the new sprint should be scheduled starting (.*)$/
      */
-    public function theNewSprintShouldBeScheduledStartingToday($date)
+    public function theNewSprintShouldBeScheduledStartingOn($date)
     {
         $sprints = $this->getSprintsCase->getProjectSprints($this->project);
         if ($sprints[0]->getStartDate()->format('d.m.Y') != date('d.m.Y', strtotime($date))) {
-            throw new RuntimeException('Sprints starts not today.');
+            throw new RuntimeException(sprintf('Sprint does not start on %s.', $date));
         }
     }
 
