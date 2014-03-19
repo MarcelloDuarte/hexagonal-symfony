@@ -2,16 +2,11 @@
 
 namespace SensioLabs\CeremonyTrackerBundle\Controller;
 
-use SensioLabs\CeremonyTracker\CreateProject;
 use SensioLabs\CeremonyTracker\GetManagerProjects;
 use SensioLabs\CeremonyTrackerBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\SecurityContext;
 
 class ListMyProjectsController
 {

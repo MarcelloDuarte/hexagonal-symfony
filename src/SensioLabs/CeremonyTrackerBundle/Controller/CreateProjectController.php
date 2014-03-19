@@ -5,15 +5,12 @@ namespace SensioLabs\CeremonyTrackerBundle\Controller;
 use SensioLabs\CeremonyTracker\CreateProject;
 use SensioLabs\CeremonyTracker\Event;
 use SensioLabs\CeremonyTrackerBundle\Entity\Project;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\SecurityContext;
 
 class CreateProjectController
 {
