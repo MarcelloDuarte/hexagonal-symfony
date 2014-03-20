@@ -34,12 +34,7 @@ class ListMyProjectsController
 
         return $this->templating->renderResponse('CeremonyTrackerBundle:Projects:list.html.twig', [
             'project_form' => $this->projectFormView,
-            'projects'     => array_map([$this, 'prepareProjectView'], $projects),
+            'projects'     =>  $projects,
         ]);
-    }
-
-    public function prepareProjectView(Project $project)
-    {
-        return ['name' => $project->getName()];
     }
 }
