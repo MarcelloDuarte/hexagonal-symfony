@@ -38,7 +38,7 @@ class ListMyProjectsController
         ]);
     }
 
-    public function prepareProjectView(Project $project)
+    private function prepareProjectView(Project $project)
     {
         return ['name' => $project->getName()];
     }
