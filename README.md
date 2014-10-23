@@ -41,4 +41,4 @@ See also
 
 - [Doucheswag](https://github.com/igorw/doucheswag/) a silex based hexagonal application.
 - [Cockburn's hexagonal](http://alistair.cockburn.us/Hexagonal+architecture) explains the architecture.
-
+- [SymfonyLive London 2013 - Marcello Duarte & Konstantin Kudryashov - The Framework as an implementation detail](https://www.youtube.com/watch?v=0L_9NutiJlc) accompanying presentation 
