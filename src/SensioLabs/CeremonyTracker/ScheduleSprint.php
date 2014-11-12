@@ -12,13 +12,13 @@ class ScheduleSprint
     const SUCCESS = 'sensio.ceremony_tracker.sprint_scheduling_success';
     const FAILURE = 'sensio.ceremony_tracker.sprint_scheduling_failure';
 
-    private $projectRepo;
+    private $sprintRepo;
     private $specRepo;
     private $dispatcher;
 
-    public function __construct(SprintRepositoryInterface $projectRepo, SpecificationRepositoryInterface $specRepo, EventDispatcherInterface $dispatcher)
+    public function __construct(SprintRepositoryInterface $sprintRepo, SpecificationRepositoryInterface $specRepo, EventDispatcherInterface $dispatcher)
     {
-        $this->projectRepo = $projectRepo;
+        $this->sprintRepo = $sprintRepo;
         $this->specRepo = $specRepo;
         $this->dispatcher = $dispatcher;
     }
@@ -36,7 +36,7 @@ class ScheduleSprint
         }
 
         $sprint->applySpecification($specification);
-        $this->projectRepo->save($sprint);
+        $this->sprintRepo->save($sprint);
         $this->dispatcher->dispatch(self::SUCCESS, new Event(['sprint' => $sprint]));
     }
 }
