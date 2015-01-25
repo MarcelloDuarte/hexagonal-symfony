@@ -133,10 +133,8 @@ class ProjectManagerContext implements ContextInterface
     {
         $projects = $this->getProjectsCase->getManagerProjects($this->projectManager);
 
-        foreach ($projects as $project) {
-            if ($project->getName() === $name) {
-                throw new RuntimeException('Project has not been saved');
-            }
+        if (count($projects)) {
+            throw new RuntimeException('Project has created!');
         }
     }
 
